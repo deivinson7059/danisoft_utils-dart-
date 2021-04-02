@@ -4,9 +4,10 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
+@deprecated
 class QrUtils {
   static const MethodChannel _channel =
-      const MethodChannel('com.aeologic.adhoc.qr_utils');
+      const MethodChannel('com.co.danisoft.qr_utils');
 
   // Returns Future<String> after scanning QR code
   static Future<String> get scanQR async {

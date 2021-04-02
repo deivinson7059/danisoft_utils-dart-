@@ -2,8 +2,6 @@ import 'package:danisoft_utils/danisoft_utils.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:flutter/services.dart';
-
 const String sharedSecret = 's3cr3t';
 
 void main() {
@@ -12,12 +10,7 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -60,19 +53,7 @@ class Page1 extends StatelessWidget {
   }
 }
 
-class Page2 extends StatefulWidget {
-  @override
-  _Page2State createState() => _Page2State();
-}
-
-class _Page2State extends State<Page2> {
-  String contentdo = 'Undefined';
-  String qrBase64Content = 'Undefined';
-  Image? qrImg;
-  String? errorD;
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  TextEditingController _qrTextEditingController = TextEditingController();
-
+class Page2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,105 +63,9 @@ class _Page2State extends State<Page2> {
       ),
       backgroundColor: Colors.blueGrey,
       body: Center(
-        child: Column(
-          children: [
-            Text('Page2'),
-            SizedBox(
-              height: 24.0,
-            ),
-            TextButton(
-              onPressed: _scanQR,
-              child: Text(
-                'Scan QR',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-            SizedBox(
-              height: 24.0,
-            ),
-            Text(
-              "Generate QR: ",
-              style: TextStyle(
-                fontSize: 24.0,
-              ),
-            ),
-            SizedBox(
-              height: 12.0,
-            ),
-            TextFormField(
-              controller: _qrTextEditingController,
-              decoration: InputDecoration(
-                  hintText: 'QR Content',
-                  labelText: 'QR Content',
-                  border: OutlineInputBorder()),
-            ),
-            SizedBox(
-              height: 12.0,
-            ),
-            qrImg != null
-                ? Container(
-                    child: qrImg,
-                    width: 120.0,
-                    height: 120.0,
-                  )
-                : Image.asset(
-                    'assets/images/ic_no_image.png',
-                    width: 120.0,
-                    height: 120.0,
-                    fit: BoxFit.cover,
-                  ),
-            SizedBox(
-              height: 16.0,
-            ),
-            TextButton(
-              onPressed: () => _generateQR(_qrTextEditingController.text),
-              child: Text(
-                'Generate QR',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
-        ),
+        child: Text('Page2'),
       ),
     );
-  }
-
-  void _scanQR() async {
-    String result;
-    try {
-      result = await QrUtils.scanQR;
-    } on PlatformException {
-      result = 'Process Failed!';
-    }
-
-    setState(() {
-      contentdo = result;
-    });
-  }
-
-  void _generateQR(String content) async {
-    if (content.trim().length == 0) {
-      if (_scaffoldKey.currentState != null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Please enter qr content'),
-          ),
-        );
-      }
-      setState(() {
-        qrImg = null;
-      });
-      return;
-    }
-    Image? image;
-    try {
-      image = await QrUtils.generateQR(content);
-    } on PlatformException {
-      image = null;
-    }
-    setState(() {
-      qrImg = image;
-    });
   }
 }
 

@@ -1,3 +1,7 @@
+#### [1.2.8] - Bug fix
+
+- Bug fix
+
 #### [1.2.7] - Bug fix
 
 - Bug fix
