@@ -1,8 +1,9 @@
 name: danisoft_utils
 description: This package helps to manage the transitions between screens in an elegant and simple way, it also helps the creation of jwt,QR scanner and generator plugin.
-version: 1.2.6
+version: 1.2.7
 homepage: https://danisoft.com.co
 repository: https://github.com/deivinson7059/danisoft_utils-dart-
+issue_tracker: https://github.com/deivinson7059/danisoft_utils-dart-/issues
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
