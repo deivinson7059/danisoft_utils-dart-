@@ -1,3 +1,7 @@
+#### [1.2.6] - Bug fix
+
+- Bug fix
+
 #### [1.2.5] - QR scanner and generator plugin
 
 - QR scanner and generator plugin
