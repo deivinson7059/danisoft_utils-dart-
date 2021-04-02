@@ -1,6 +1,6 @@
 name: danisoft_utils
-description: This package helps to manage the transitions between screens in an elegant and simple way, it also helps the creation of jwt.
-version: 1.2.4
+description: This package helps to manage the transitions between screens in an elegant and simple way, it also helps the creation of jwt,QR scanner and generator plugin.
+version: 1.2.5
 homepage: https://danisoft.com.co
 
 environment:
